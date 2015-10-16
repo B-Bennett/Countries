@@ -19,9 +19,9 @@ public class Countries {
             Country country = new Country();
             country.abbreviation = countryAbbreviation;
             country.name = countryName;
-
             String firstLetter = String.valueOf(countryName.charAt(0));
             ArrayList<Country> list = countries.get(firstLetter);
+
             if (list == null) {
                 list = new ArrayList();
                 list.add(country);
@@ -30,17 +30,22 @@ public class Countries {
                 list.add(country);
             }
         }
-
         Scanner scanner = new Scanner(System.in);
-        while (true) {
             System.out.println("Enter the first letter of a Country.");
             String userInputLetter = scanner.nextLine();
             ArrayList<Country> countryList = countries.get(userInputLetter);
-            System.out.println(
-            );
 
-         }
+        if(countries.containsKey(userInputLetter)) {
+            String newLine = "";
+            for(Country n :countries.get(userInputLetter)) {
+                newLine = newLine + String.format("%s %s\n", n.abbreviation, n.name);
+
+                System.out.println(newLine);
+            }
+            writeFile(userInputLetter, newLine);
+        }
     }
+
     static String readFile(String fileName) {
         File f = new File(fileName);
         try {
