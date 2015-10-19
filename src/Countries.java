@@ -33,16 +33,15 @@ public class Countries {
         Scanner scanner = new Scanner(System.in);
             System.out.println("Enter the first letter of a Country.");
             String userInputLetter = scanner.nextLine();
-            ArrayList<Country> countryList = countries.get(userInputLetter);
 
         if(countries.containsKey(userInputLetter)) {
             String newLine = "";
             for(Country n :countries.get(userInputLetter)) {
                 newLine = newLine + String.format("%s %s\n", n.abbreviation, n.name);
 
-                System.out.println(newLine);
+                System.out.println(newLine);//print abbreviation & name of country of user input letter.
             }
-            writeFile(userInputLetter, newLine);
+            writeFile(userInputLetter, newLine);//newLine holds the countries name chosen by the user input letter.
         }
     }
 
