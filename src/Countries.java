@@ -9,18 +9,19 @@ public class Countries {
     public static void main(String[] args) {
 
         HashMap<String, ArrayList<Country>> countries = new HashMap();
-        String countryContent = readFile("countries.txt");
+        String countryContent = readFile("countries.txt");//fileContent could have named
         String[] countryLines = countryContent.split("\n");
 
-        for (String countryLine : countryLines) {
-            String[] columns = countryLine.split("\\|");
-            String countryAbbreviation = columns[0];
-            String countryName = columns[1];
-            Country country = new Country();
+        for (String countryLine : countryLines) {  //to loop over array
+            String[] columns = countryLine.split("\\|"); //parse ing the array. using the pipe to split line
+            String countryAbbreviation = columns[0]; //abbrev in front of pipe
+            String countryName = columns[1]; //name back of pipe
+            Country country = new Country(); //create a country object (abbrev, name)
             country.abbreviation = countryAbbreviation;
             country.name = countryName;
-            String firstLetter = String.valueOf(countryName.charAt(0));
-            ArrayList<Country> list = countries.get(firstLetter);
+
+            String firstLetter = String.valueOf(countryName.charAt(0)); //get the first letter from the name
+            ArrayList<Country> list = countries.get(firstLetter); //create a variable."asking get me all the letters that start with."
 
             if (list == null) {
                 list = new ArrayList();
